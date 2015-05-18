@@ -9,7 +9,8 @@ module GPGME
     end
 
     def write(hook, buffer, length)
-      @io.write(buffer[0 .. length])
+      data = buffer.force_encoding("UTF-8")
+      @io.write(data[0 .. length])
     end
 
     def seek(hook, offset, whence)
